@@ -4,12 +4,17 @@ public class DriverClass {
     public static void main(String[] args) throws InterruptedException {
 //       Creating a thread using Runnable Interface. Thread per class.
 
-        Task task2 = new Task();
         Runnable task1 = new Task();
+        Task task2 = new Task();
         Task task3 = new Task();
 
         task2.add(1,9);
         task3.add(2,7);
+        task2.setTaskName("Bolarinwa Runs");
+        task3.setTaskName("Mary Runs");
+
+//        System.out.println(task3.getCurrentThread());
+
 
 //      Create Threads(workers) and add tasks to them.
         Thread thread1 = new Thread(task1);
@@ -25,8 +30,16 @@ public class DriverClass {
         thread2.start();
         thread3.start();
 
+//        set thread priority
+        thread1.setPriority(Thread.MIN_PRIORITY);
+        thread2.setPriority(Thread.NORM_PRIORITY);
+        thread3.setPriority(Thread.MAX_PRIORITY);
+
 //      pause thread1
-        thread1.sleep(10000);
+        thread1.sleep(10);
+
+//      pause the main thread
+        Thread.sleep(10000);
 
 //      get states of the threads
 
